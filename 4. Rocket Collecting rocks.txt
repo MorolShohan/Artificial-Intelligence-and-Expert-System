@@ -1,0 +1,11 @@
+#problem 3->rocket collecting rocks
+x=int(input("Enter number of step: "))
+for i in range(x):
+  print("\n")
+  print("\t1. Specifiec rock")
+  print("\t2. Same rock")
+  op=int(input("Choose: "))
+  if op==1:
+    print("Collect the rock")
+  elif op==2:
+    print("The rock is already collected")

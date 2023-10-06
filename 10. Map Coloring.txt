@@ -1,0 +1,38 @@
+colors = ['Red', 'Blue', 'Green']
+
+states = ['WA', 'NT', 'SA', 'Q', 'NSW', 'V']
+
+neighbors = {}
+neighbors['WA'] = ['NT', 'SA']
+neighbors['NT'] = ['WA', 'SA', 'Q']
+neighbors['SA'] = ['WA', 'NT', 'Q', 'NSW', 'V']
+neighbors['Q'] = ['NT', 'SA', 'NSW']
+neighbors['NSW'] = ['Q', 'SA', 'V']
+neighbors['V'] = ['SA', 'NSW']
+
+
+colors_of_states = {}
+
+def is_differnet_color(state, color):
+    for neighbor in neighbors.get(state): 
+        color_of_neighbor = colors_of_states.get(neighbor)
+        if color_of_neighbor == color:
+            return False
+
+    return True
+
+def get_color_for_state(state):
+    for color in colors:
+        if is_differnet_color(state, color):
+            return color
+
+
+for state in states:
+    colors_of_states[state] = get_color_for_state(state)
+
+#print(colors_of_states)
+for i in colors_of_states:
+  print(i,"[",colors_of_states[i],end="]\t: ")
+  for j in neighbors[i]:
+    print(j,"[",colors_of_states[j],end="], ")
+  print()

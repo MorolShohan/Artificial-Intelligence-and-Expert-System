@@ -1,0 +1,20 @@
+#Problem 2->Light fan agent
+x=int(input("Enter number of step: "))
+for i in range(x):
+  print("\n")
+  print("\t1. No one in ther room")
+  print("\t2. Someone in the room")
+  op=int(input("Choose: "))
+  if op==1:
+    print("\tTurn light and fan off.")
+  elif op==2:
+    print("\tWeather is?")
+    print("\t\t1. Day")
+    print("\t\t2. Night")
+    op2=int(input("Choose: "))
+    if op2==1:
+      print("\t\tTurn on fan only")
+    elif op2==2:
+      print("\t\tTurn on fan and light")
+
+print("\nThanks.")

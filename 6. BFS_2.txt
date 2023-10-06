@@ -1,0 +1,43 @@
+graph={
+    "Arad":["Zerind","Sibiu","Timisoara"],
+    "Zerind":["Arad","Oradea"],
+    "Oradea":["Zerind","Sibiu"],
+    "Sibiu":["Arad","Oradea","Fagaras"],
+    "Timisoara":["Arad","Lugoj"],
+    "Lugoj":["Timisoara","Mehadia"],
+    "Mehadia":["Lugoj","Drobeta"],
+    "Drobeta":["Craiova","Mehadia"],
+    "Craiova":["Drobeta","Rimnicu Vilcea","Pitesti"],
+    "Rimnicu Vilcea":["Sibiu","Craiova","Pitesti"],
+    "Pitesti":["Bucharest","Craiova","Rimnicu Vilcea"],
+    "Fagaras":["Sibiu","Bucharest"],
+    "Bucharest":["Giurgiu","Urziceni"],
+    "Giurgiu":["Bucharest"],
+    "Urziceni":["Bucharest","Vaslui","Hirsova"],
+    "Hirsova":["Eforic","Urziceni"],
+    "Eforic":["Hirsova"],
+    "Vaslui":["Urziceni","Iasi"],
+    "Iasi":["Vaslui","Neamt"],
+    "Neamt":["Iasi"]
+
+}
+visited=[]    #list for visited nodes
+queue=[]      #initalize a queue
+
+def bfs(visited, graph,node,destination): #function for BFS
+  visited.append(node)
+  queue.append(node)
+  while queue:
+    m=queue.pop(0)
+    print(m,end=" ")
+    if m==destination:
+      return
+
+    for neighbour in graph[m]:
+      if neighbour not in visited:
+        visited.append(neighbour)
+        queue.append(neighbour)
+
+# Driver code
+print("Following is Breadth-First Search: ")
+bfs(visited,graph, "Arad","Bucharest")   #function calling

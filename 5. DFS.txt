@@ -1,0 +1,39 @@
+# Using a Python dictionary to act as an adjacency list
+graph={
+    "Arad":["Zerind","Sibiu","Timisoara"],
+    "Zerind":["Arad","Oradea"],
+    "Oradea":["Zerind","Sibiu"],
+    "Sibiu":["Arad","Oradea","Fagaras"],
+    "Timisoara":["Arad","Lugoj"],
+    "Lugoj":["Timisoara","Mehadia"],
+    "Mehadia":["Lugoj","Drobeta"],
+    "Drobeta":["Craiova","Mehadia"],
+    "Craiova":["Drobeta","Rimnicu Vilcea","Pitesti"],
+    "Rimnicu Vilcea":["Sibiu","Craiova","Pitesti"],
+    "Pitesti":["Bucharest","Craiova","Rimnicu Vilcea"],
+    "Fagaras":["Sibiu","Bucharest"],
+    "Bucharest":["Giurgiu","Urziceni"],
+    "Giurgiu":["Bucharest"],
+    "Urziceni":["Bucharest","Vaslui","Hirsova"],
+    "Hirsova":["Eforic","Urziceni"],
+    "Eforic":["Hirsova"],
+    "Vaslui":["Urziceni","Iasi"],
+    "Iasi":["Vaslui","Neamt"],
+    "Neamt":["Iasi"]
+
+}
+
+visited = [] # Set to keep track of visited nodes of graph.
+
+def dfs(visited, graph, node, destination):  #function for dfs 
+    if node not in visited:
+        print (node, end=" ")
+        if node==destination:
+          return
+        visited.append(node)
+        for neighbour in graph[node]:
+            dfs(visited, graph, neighbour, destination)
+
+# Driver Code
+print("Following is the Depth-First Search")
+dfs(visited, graph, "Arad","Bucharest")

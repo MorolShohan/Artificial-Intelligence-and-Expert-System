@@ -1,0 +1,17 @@
+x=int(input("Enter number of step: "))
+for i in range(x):
+  print("\n")
+  print("1. [A, Clean]")
+  print("2. [A, Dirty]")
+  print("3. [B, Clean]")
+  print("4. [B, Dirty]")
+  option=int(input("Choose an option: "))
+  if option==1:
+    print("\tDo: Right")
+  elif option==2:
+    print("\tDo: Suck")
+  elif option==3:
+    print("\tDo: Left")
+  elif option==4:
+    print("\tDo: Suck")
+print("\nThanks.")

@@ -1,0 +1,47 @@
+#A* search algorithm
+
+graph={
+    "S":{"A":3,"B":2},
+    "A":{"C":4,"D":1},
+    "B":{"E":3,"F":1},
+    "E":{"H":5},
+    "F":{"I":2,"G":3}
+}
+hb={
+    "A":12,
+    "B":4,
+    "C":7,
+    "D":3,
+    "E":8,
+    "F":3,
+    "G":8,
+    "H":3,
+    "I":8,
+    "S":3,
+    "G":8
+}
+
+visited=[]    #list for visited nodes
+queue=[]      #initalize a queue
+
+def Astar(graph,node,destination): #function for BFS
+  hmin=10000;
+  next=""
+  print(node,end="-> ")
+  for neighbour in graph[node]:
+    s1=str(node)
+    s2=str(neighbour)
+    n=graph[node]
+    h=hb[s2]+n[s2]
+    #print(s2,": ",h,end=", ")
+    if s2==destination:
+      print(s2)
+      return
+    if h<hmin:
+      hmin=h
+      next=s2
+  #print(next, end="-> ")
+  Astar(graph, next, destination)
+# Driver code
+print("Following is A* Search: ")
+Astar(graph, "S","G")   #function calling

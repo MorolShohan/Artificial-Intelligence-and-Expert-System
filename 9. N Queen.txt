@@ -1,0 +1,35 @@
+# N Queen problem
+from itertools import permutations
+
+def isSafe(chess, N):
+    for i in range(N):
+        for j in range(N):
+            for k in range(N):
+                for l in range(N):
+                    if i!=k and j!=l:
+                        if i-j==k-l or i+j==k+l:
+                            if chess[i][j]==1 and chess[k][l]==1:
+                                return False
+    return True
+
+def nQueen(N):
+    if N<4:
+        print("No solution")
+        return
+    chess=[[0]*N for a in range(N)]
+    for i in range(N):
+        chess[i][i]=1
+    for i in range(N):
+        print(chess[i])
+    perm=permutations(chess,N)
+    #print(perm)
+    count=0
+    for i in list(perm):
+        if isSafe(i,N):
+            count=count+1
+            print(count)
+            for j in i:
+                print(j)
+
+N=int(input("Enter number of Queens: "))
+nQueen(N)
